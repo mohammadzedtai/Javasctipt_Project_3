@@ -4,131 +4,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Project</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
         }
 
         h1 {
-            display: flex;
-            justify-content: center;
-            color: blueviolet;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         }
 
         .main {
-            border: 5px solid rgb(16, 51, 116);
-            margin: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
             display: grid;
-            justify-content: center;
-
+            justify-items: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-in-out;
         }
 
         .min {
-            display: grid;
-            grid-template-columns: auto auto;
-            justify-content: center;
-            align-items: center;
-            width: auto;
-            height: auto;
-            border: 2px solid green;
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100px;
-            height: 50px;
-            border: 4px solid rgb(194, 11, 152);
+            background: linear-gradient(45deg, #ff4e50, #f9d423);
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 12px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #body {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
 
         .img {
             width: 700px;
-            border: 2px solid black;
             height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 3px solid #fff;
+            transition: transform 0.5s, box-shadow 0.5s;
+        }
+
+        .img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 
 <body>
-    <h1>Hello you</h1>
-
     <div class="main">
-
-
+        <h1>My Slider Project</h1>
         <div class="min">
             <button id="prev" class="button">Previous</button>
             <button id="next" class="button">Next</button>
         </div>
         <h1 id="body"></h1>
-        <img src="" id="image" class="img" alt="">
+        <img src="" id="image" class="img" alt="Slider Image">
     </div>
 
-
-
-
-
     <script>
-        let body = document.getElementById("body")
-        let prev = document.getElementById("prev")
-        let next = document.getElementById("next")
-        let image = document.getElementById("image")
+        let body = document.getElementById("body");
+        let prev = document.getElementById("prev");
+        let next = document.getElementById("next");
+        let image = document.getElementById("image");
 
-
-        let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        let count = 0
+        let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let count = 0;
 
         let images = [
             "https://4kwallpapers.com/images/walls/thumbs_3t/20528.png",
-
             "https://i.ytimg.com/vi/t0Q2otsqC4I/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBgbkdHwq9v7C3DObsH54uBSf8hiw",
-
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4fBFK6QWpo3uzQ9S9MNZOqmg0SCE3taEG_w&s",
-
-
-
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJSF80YbaMGC0sri7vFfsBn7K289vFdiTbUA&s",
-
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD6Rq-WF6mcySOhs7CCx0z8QMsTngRlfgG9w&s",
-
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLUW8X1-azUWD2TjO6A2nq0bFFzSvFYnhslQ&s",
-
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxpJb3LkpOXRMNo9y0TzO-xiVr3pBjOgm7tg&s",
-
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTufAeCmzCn0lq8TmXHLF785dv_lD8j6gwpow&s",
-
-            "https://images.euronews.com/articles/stories/07/38/86/86/1536x864_cmsv2_34816e51-346c-525e-9d16-c92108f88346-7388686.jpg"
-,"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-superJumbo.jpg"
-
+            "https://images.euronews.com/articles/stories/07/38/86/86/1536x864_cmsv2_34816e51-346c-525e-9d16-c92108f88346-7388686.jpg",
+            "https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-superJumbo.jpg"
         ];
 
-
         function price(array) {
-            body.innerText = array[count]
+            body.innerText = `Image ${array[count]}`;
             image.src = images[count];
         }
         price(array);
 
         next.addEventListener("click", function () {
             count++;
-            if (count == array.length) {
-                count = 0;
-            }
+            if (count == array.length) count = 0;
             price(array);
         });
+
         prev.addEventListener("click", function () {
-
-
-            if (count == 0) {
-                count = array.length;
-            }
+            if (count == 0) count = array.length;
             count--;
             price(array);
         });
-        setInterval(()=>{
+          setInterval(()=>{
             count++
             if(count==images.length){
                 count=0   
@@ -137,6 +153,5 @@
         },3000)
     </script>
 </body>
-
 
 </html>
