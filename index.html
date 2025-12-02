@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            display: flex;
+            justify-content: center;
+            color: blueviolet;
+        }
+
+        .main {
+            border: 5px solid rgb(16, 51, 116);
+            margin: 50px;
+            display: grid;
+            justify-content: center;
+
+        }
+
+        .min {
+            display: grid;
+            grid-template-columns: auto auto;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            height: auto;
+            border: 2px solid green;
+        }
+
+        .button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 50px;
+            border: 4px solid rgb(194, 11, 152);
+        }
+
+        .img {
+            width: 700px;
+            border: 2px solid black;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hello you</h1>
+
+    <div class="main">
+
+
+        <div class="min">
+            <button id="prev" class="button">Previous</button>
+            <button id="next" class="button">Next</button>
+        </div>
+        <h1 id="body"></h1>
+        <img src="" id="image" class="img" alt="">
+    </div>
+
+
+
+
+
+    <script>
+        let body = document.getElementById("body")
+        let prev = document.getElementById("prev")
+        let next = document.getElementById("next")
+        let image = document.getElementById("image")
+
+
+        let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        let count = 0
+
+        let images = [
+            "https://4kwallpapers.com/images/walls/thumbs_3t/20528.png",
+
+            "https://i.ytimg.com/vi/t0Q2otsqC4I/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBgbkdHwq9v7C3DObsH54uBSf8hiw",
+
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4fBFK6QWpo3uzQ9S9MNZOqmg0SCE3taEG_w&s",
+
+
+
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJSF80YbaMGC0sri7vFfsBn7K289vFdiTbUA&s",
+
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD6Rq-WF6mcySOhs7CCx0z8QMsTngRlfgG9w&s",
+
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLUW8X1-azUWD2TjO6A2nq0bFFzSvFYnhslQ&s",
+
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxpJb3LkpOXRMNo9y0TzO-xiVr3pBjOgm7tg&s",
+
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTufAeCmzCn0lq8TmXHLF785dv_lD8j6gwpow&s",
+
+            "https://images.euronews.com/articles/stories/07/38/86/86/1536x864_cmsv2_34816e51-346c-525e-9d16-c92108f88346-7388686.jpg"
+,"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-superJumbo.jpg"
+
+        ];
+
+
+        function price(array) {
+            body.innerText = array[count]
+            image.src = images[count];
+        }
+        price(array);
+
+        next.addEventListener("click", function () {
+            count++;
+            if (count == array.length) {
+                count = 0;
+            }
+            price(array);
+        });
+        prev.addEventListener("click", function () {
+
+
+            if (count == 0) {
+                count = array.length;
+            }
+            count--;
+            price(array);
+        });
+        setInterval(()=>{
+            count++
+            if(count==images.length){
+                count=0   
+            }
+            price(array);
+        },3000)
+    </script>
+</body>
+
+
+</html>
